@@ -1,0 +1,10 @@
+{
+    "batch-size": 128,
+    "epochs": 50,
+    "shuffle": true,
+    "save-path": "save_weights",
+    "window-size": 100,
+    "stride": 50,
+    "duration-unit": "sample-point",
+    "model_name": "sample-conf"
+}

@@ -1,0 +1,11 @@
+{
+	"x_basepath": "/mnt/left/phlai_DATA/bci-challenge/original",
+	"y_basepath": "/mnt/left/lambert/ner2015_together/fulldata/onlybrain",
+	"x_fpath": "Data_S{}.set",
+	"y_fpath": "Data_S{}_Sess.set",
+	"sfreq": 128.0,
+	"fmt-terms": [["02"], ["22"], ["12"], ["20"], ["07"], ["11"]],
+	"ch_names": null,
+	"tmin": 0,
+	"tmax": 1200
+}
