@@ -1,3 +1,4 @@
 mne==0.24.1
+matplotlib
 scipy
 numpy

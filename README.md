@@ -38,6 +38,13 @@ print(torch.cuda.get_device_name(dev_id))
 
 ```sh
 $ python main.py --train-anno configs/TRIAL/set_train.json \
-	--train-anno configs/TRIAL/set_valid.json \
-	--config-path configs/TRIAL/config.json
+    --train-anno configs/TRIAL/set_valid.json \
+    --config-path configs/TRIAL/config.json
 ```
+
+### Quick Inference
+
+```sh
+$ python inference.py --mat-path sampleData/ERN_S02_exSam.mat --model-path sampleData/bc-12_0010.12_3040.4.pth
+```
+
