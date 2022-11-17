@@ -32,7 +32,7 @@ class CLEEGN(nn.Module):
         )
         self.conv4 = nn.Sequential(
             nn.Conv2d(N_F, n_chan, (n_chan, 1), padding="same", bias=True),
-            nn.BatchNorm2d(N_F, eps=1e-3, momentum=0.99)
+            nn.BatchNorm2d(n_chan, eps=1e-3, momentum=0.99)
         )
         self.conv5 = nn.Conv2d(n_chan, 1, (n_chan,1), padding="same", bias=True)
 
