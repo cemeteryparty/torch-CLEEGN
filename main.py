@@ -77,7 +77,7 @@ if __name__ == "__main__":
     val_loader = torch.utils.data.DataLoader(
         validset, batch_size=BATCH_SIZE, shuffle=True, num_workers=4, pin_memory=True
     )
-    model = CLEEGN(n_chan=x_train.size()[2], fs=SFREQ, N_F=x_train.size()[2]).to(device)
+    model = CLEEGN(n_chan=x_train.size(2), fs=SFREQ, N_F=x_train.size(2)).to(device)
     summary(model, input_size=(BATCH_SIZE, 1, x_train.size()[2], x_train.size()[3]))
 
     ckpts = [
@@ -104,8 +104,10 @@ if __name__ == "__main__":
             epoch + 1, NUM_EPOCHS, time.time() - tra_time0, loss, val_loss, lr
         ))
         state = dict(
-            epoch=epoch + 1, min_loss=ckpts[0].bound, min_vloss=ckpts[1].bound,
-            state_dict=model.state_dict(), loss=loss, val_loss=val_loss, learning_rate=lr
+            epoch=epoch + 1, loss=loss, val_loss=val_loss,
+            state_dict=model.state_dict(), learning_rate=lr,
+            args=dict(n_chan=x_train.size(2), fs=SFREQ, N_F=x_train.size(2)),
+            ch_info=tra_anno["ch_names"],
         )
         for ckpt in ckpts:
             ckpt.on_epoch_end(epoch + 1, state)
