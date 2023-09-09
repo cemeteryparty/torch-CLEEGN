@@ -1,0 +1,20 @@
+{
+    "trial_name": "ner2015",
+    "model_name": "cleegn",
+    "lr": 1e-5,
+    "epochs": 1000,
+    "batch_size": 32,
+    "optim": "adam",
+    "optim_args": {"eps": 1e-08, "weight_decay": 1e-4},
+    "x_fpath": "bci-challenge/raw/Data_S{}.set",
+    "y_fpath": "bci-challenge/reference/Data_S{}.set",
+    "sfreq": 128.0,
+    "fmt_terms": [["02"], ["06"], ["07"], ["11"], ["12"], ["13"], ["14"], ["16"], ["17"], ["18"], ["20"], ["21"], ["22"], ["23"], ["24"], ["26"]],
+    "ch_names": null,
+    "n_split": 4,
+    "range_t_train": [0, 600],
+    "range_t_valid": [1800, 2400],
+    "window": 4,
+    "step": 2,
+    "duration_unit": "sec"
+}

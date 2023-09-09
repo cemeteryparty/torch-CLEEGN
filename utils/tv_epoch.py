@@ -11,39 +11,30 @@ import mne
 import sys
 import os
 
-def val(val_loader, model, criterion, verbose=0):
+def val(val_loader, model, criterion):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.eval() # switch to evaluation mode
 
-    log = ""
-    ep_time0 = time.time()
     epoch_loss = np.zeros((len(val_loader), ))
     for i, (x_batch, y_batch) in enumerate(val_loader):
         x_batch, y_batch = x_batch.to(device, dtype=torch.float), y_batch.to(device, dtype=torch.float)
         with torch.no_grad():
             output = model(x_batch)
-        # output = x_batch # DEBUG
         loss = criterion(output, y_batch)
 
         epoch_loss[i] = loss.item()
-        if verbose:
-            print("\r{}".format(" " * len(log)), end="")
-            log = "\r{}/{} - {:.4f} s - loss: {:.4f} - acc: nan".format(
-                i + 1, len(val_loader), time.time() - ep_time0, epoch_loss[i]
-            )
-            print(log, end="")
     return epoch_loss.mean(axis=0)
 
 
 def train(tra_loader, model, criterion, optimizer, verbose=1):
+    max_iter = len(tra_loader)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.train()  # switch to train mode
 
     log = ""
     ep_time0 = time.time()
-    epoch_loss = np.zeros((len(tra_loader), ))
+    epoch_loss = np.zeros((max_iter, ))
     for i, (x_batch, y_batch) in enumerate(tra_loader):
-        # print(i, x_batch.shape, y_batch.shape)
         x_batch, y_batch = x_batch.to(device, dtype=torch.float), y_batch.to(device, dtype=torch.float)
 
         optimizer.zero_grad()
@@ -56,7 +47,7 @@ def train(tra_loader, model, criterion, optimizer, verbose=1):
         if verbose:
             print("\r{}".format(" " * len(log)), end="")
             log = "\r{}/{} - {:.4f} s - loss: {:.4f} - acc: nan".format(
-                i + 1, len(tra_loader), time.time() - ep_time0, epoch_loss[i]
+                i + 1, max_iter, time.time() - ep_time0, epoch_loss[i]
             )
             print(log, end="")
     return epoch_loss.mean(axis=0)
