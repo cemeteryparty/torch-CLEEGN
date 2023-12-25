@@ -1,27 +1,19 @@
 # torch-CLEEGN
 
-The PyTorch implementation of CLEEGN, a convolutional neural network for online automatic EEG reconstruction
+This repository is the official PyTorch implementation of "CLEEGN: A Convolutional Neural Network for Plug-and-Play Automatic EEG Reconstruction".
 
-## Installation
+![noname](_resources/ea62b68889f6fcd30fc62b992c2e183913fe8202.png)
 
-```sh
-$ git clone https://github.com/cemeteryparty/torch-CLEEGN.git
-$ cd torch-CLEEGN/
-```
+## Instruction
 
-### Activate environment ###
+### Environment Setup ###
 
 ```sh
-$ conda create --name ENV_NAME python=3.7
-$ conda activate ENV_NAME
-```
-
-### Install Library ###
-
-```sh
-$ nvidia-smi  # Get the CUDA Version
-$ conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
-$ pip install -r requirements.txt
+conda create --name ENV_NAME python=3.7
+conda activate ENV_NAME
+nvidia-smi  # Get the CUDA Version
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+pip install -r requirements.txt
 ```
 
 #### Check GPU Support
@@ -37,14 +29,15 @@ print(torch.cuda.get_device_name(dev_id))
 ### Training Usage
 
 ```sh
-$ python main.py --train-anno configs/TRIAL/set_train.json \
-    --train-anno configs/TRIAL/set_valid.json \
-    --config-path configs/TRIAL/config.json
+$ python main.py configs/CONFIG_FILENAME.json
 ```
 
 ### Quick Inference
 
 ```sh
-$ python inference.py --mat-path sampleData/ERN_S02_exSam.mat --model-path sampleData/bc-12_0010.12_3040.4.pth
+$ python inference.py --mat-path sample/ERN_S02_exSam.mat --model-path weights/weight-0.pth
 ```
 
+## Results
+
+![noname](_resources/37a5301a88da334dc5afc5b63979daa0f3f45e68.png)

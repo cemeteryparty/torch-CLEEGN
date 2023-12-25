@@ -1,4 +1,7 @@
-mne==0.24.1
-matplotlib
-scipy
 numpy
+scipy
+matplotlib
+scikit-learn
+eeglabio
+mne
+torchinfo

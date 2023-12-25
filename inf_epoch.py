@@ -42,6 +42,7 @@ if __name__ == "__main__":
         state = torch.load(state_path, map_location="cpu")
 
         if args.nn == "cleegn":
+            # KeyError: build directory manaully
             model = CLEEGN(**state["struct_args"]).to(device)
         else:
             raise NotImplementedError("`{}` not implement".format(cfg["model_name"]))

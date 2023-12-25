@@ -12,7 +12,7 @@ class Permute2d(nn.Module):
 
 class CLEEGN(nn.Module):
     def __init__(self, n_chan, fs, N_F=20, tem_kernelLen=0.1):
-        super(CLEEGN,self).__init__()
+        super(CLEEGN, self).__init__()
         self.n_chan = n_chan
         self.N_F = N_F
         self.fs = fs
