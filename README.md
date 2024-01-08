@@ -46,4 +46,4 @@ $ python inference.py --mat-path sample/ERN_S02_exSam.mat --model-path weights/w
 
 [cemeteryparty/real_time_LSL_BCI](https://github.com/cemeteryparty/real_time_LSL_BCI) is the implementation of CLEEGN in a real-time system. The device in the video is an 8-channel EEG cap designed by Artise Biomedical Co., Ltd.
 
-![](_resources/20232230_demo.gif)
+![](_resources/a541b67d5e1c364b-20240108dem0.gif)
